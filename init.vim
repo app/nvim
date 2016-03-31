@@ -107,6 +107,8 @@ autocmd FileType php set tabstop=2 | set shiftwidth=2
 "{{{ FZF setup
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_buffers_jump = 1
+
+" Open buffer
 function! s:buflist()
   redir => ls
   silent ls
@@ -124,7 +126,37 @@ nnoremap <silent> <C-b> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
+" Search in most recently used
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
+" Search line in buffer
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+
 nmap <C-p> :FZF<CR>
+nmap <C-m> :FZFMru<CR>
+nmap <C-f> :FZFLines<CR>
 "}}}
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
