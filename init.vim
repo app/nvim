@@ -66,22 +66,6 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 autocmd! BufWritePost * Neomake
 
 
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S> :w<CR>
-vnoremap <C-S> <C-C>:w<CR>
-inoremap <C-S> <Esc>:w<CR>
-" Quit from vim
-noremap <C-Q> :q<CR>
-inoremap <C-Q> <C-O>:q<CR>
-" Close curent buffer
-noremap <silent> <Leader>q :bd<CR>
-
-" Toggle comments by pressing cc while in normal mode
-map cc <leader>c<space>
-" Cyrillic 'сс' :)
-map сс <leader>c<space>
-
-
 " {{{ neomake options
 let g:neomake_list_height = 5
 let g:neomake_serialize = 1
@@ -107,9 +91,15 @@ let g:neomake_error_sign = {
 " }}}
 
 
-" Russian keyboard layous support
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
+autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+set listchars=tab:\|.,trail:.
+autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+set listchars=tab:\|.,trail:.
+
+autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+set listchars=tab:\|.,trail:.
+
+autocmd FileType php set tabstop=2 | set shiftwidth=2 
+
+source $HOME/.config/nvim/rc.d/myshortcuts.vim
