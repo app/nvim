@@ -1,6 +1,3 @@
-"set nocompatible
-"syntax on
-"filetype plugin indent on
 let mapleader=" "
 set clipboard+=unnamedplus
 set cursorline
@@ -12,6 +9,8 @@ endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
@@ -104,5 +103,28 @@ autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set
 set listchars=tab:\|.,trail:.
 
 autocmd FileType php set tabstop=2 | set shiftwidth=2 
+
+"{{{ FZF setup
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_buffers_jump = 1
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <C-b> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
+nmap <C-p> :FZF<CR>
+"}}}
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
