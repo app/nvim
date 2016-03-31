@@ -23,3 +23,6 @@ noremap <silent> <Leader>q :bd<CR>
 map cc <leader>c<space>
 " Cyrillic 'сс' :)
 map сс <leader>c<space>
+
+" Select all
+nmap <C-a> ggVG
