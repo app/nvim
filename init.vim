@@ -6,9 +6,12 @@ set clipboard+=unnamedplus
 set cursorline
 set nu
 
+function! InstallRemotePlugin(info)
+  UpdateRemotePlugins
+endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
