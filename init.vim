@@ -4,6 +4,7 @@
 let mapleader=" "
 set clipboard+=unnamedplus
 set cursorline
+set nu
 
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'Raimondi/delimitMate'
@@ -104,3 +105,11 @@ let g:neomake_error_sign = {
   \ }
 
 " }}}
+
+
+" Russian keyboard layous support
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
