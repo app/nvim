@@ -65,10 +65,8 @@ endif
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
-autocmd! BufWritePost * Neomake
-
-
 " {{{ neomake options
+autocmd! BufWritePost * Neomake
 let g:neomake_list_height = 5
 let g:neomake_serialize = 1
 let g:neomake_verbose = 0
@@ -111,6 +109,7 @@ let g:fzf_buffers_jump = 1
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :Lines<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 " Search in most recently used
 nnoremap <silent> <C-m> :History<CR>
 "}}}
