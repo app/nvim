@@ -74,21 +74,21 @@ let g:neomake_serialize = 1
 let g:neomake_verbose = 0
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_message_sign = {
-        \ 'text': '»',
-        \ 'texthl': 'DiffText',
-        \ }
+      \ 'text': '»',
+      \ 'texthl': 'DiffText',
+      \ }
 let g:neomake_informational_sign = {
-        \ 'text': '»',
-        \ 'texthl': 'DiffAdd',
-        \ }
+      \ 'text': '»',
+      \ 'texthl': 'DiffAdd',
+      \ }
 let g:neomake_warning_sign = {
-  \ 'text': "\u266a", 
-  \ 'texthl': 'DiffChange',
-  \ }
+      \ 'text': "\u266a", 
+      \ 'texthl': 'DiffChange',
+      \ }
 let g:neomake_error_sign = {
-  \ 'text': "»",
-  \ 'texthl': 'DiffDelete',
-  \ }
+      \ 'text': "»",
+      \ 'texthl': 'DiffDelete',
+      \ }
 
 " }}}
 
