@@ -7,11 +7,12 @@ function! InstallRemotePlugin(info)
   UpdateRemotePlugins
 endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
+Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'benekastah/neomake'
+"Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'vim-airline/vim-airline'
@@ -66,28 +67,52 @@ endif
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
+
+"{{{ Syntastic setup
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+" use jshint
+" sudo npm install jshint -g
+" jshint should be installed and available in your command line 
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_checkers = ['jshint']
+" installed by
+" sudo gem install rake rspec bundler pg_query && sudo gem install sqlint
+let g:syntastic_sql_checkers = ['sqlint']
+
+" show any linting errors immediately
+let g:syntastic_check_on_open = 1
+
+let g:syntastic_warning_symbol = "»"
+let g:syntastic_error_symbol = "»"
+" }}}
+
+
 " {{{ neomake options
-autocmd! BufWritePost * Neomake
-let g:neomake_list_height = 5
-let g:neomake_serialize = 1
-let g:neomake_verbose = 0
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_message_sign = {
-      \ 'text': '»',
-      \ 'texthl': 'DiffText',
-      \ }
-let g:neomake_informational_sign = {
-      \ 'text': '»',
-      \ 'texthl': 'DiffAdd',
-      \ }
-let g:neomake_warning_sign = {
-      \ 'text': "\u266a", 
-      \ 'texthl': 'DiffChange',
-      \ }
-let g:neomake_error_sign = {
-      \ 'text': "»",
-      \ 'texthl': 'DiffDelete',
-      \ }
+"autocmd! BufWritePost * Neomake
+"let g:neomake_list_height = 5
+"let g:neomake_serialize = 1
+"let g:neomake_verbose = 0
+"let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_message_sign = {
+      "\ 'text': '»',
+      "\ 'texthl': 'DiffText',
+      "\ }
+"let g:neomake_informational_sign = {
+      "\ 'text': '»',
+      "\ 'texthl': 'DiffAdd',
+      "\ }
+"let g:neomake_warning_sign = {
+      "\ 'text': "\u266a", 
+      "\ 'texthl': 'DiffChange',
+      "\ }
+"let g:neomake_error_sign = {
+      "\ 'text': "»",
+      "\ 'texthl': 'DiffDelete',
+      "\ }
 
 " }}}
 
@@ -114,5 +139,12 @@ nnoremap <silent> <leader>b :Buffers<CR>
 " Search in most recently used
 nnoremap <silent> <C-m> :History<CR>
 "}}}
+
+" Restore cursor position in reopened file
+autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal g`\"" |
+            \ endif
+
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
