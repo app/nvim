@@ -20,6 +20,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'kchmck/vim-coffee-script', {'for':'coffee'}
 call plug#end()
 
 if &term!="xterm"
