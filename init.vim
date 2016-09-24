@@ -2,6 +2,7 @@ let mapleader=" "
 set clipboard+=unnamedplus
 set cursorline
 set nu
+set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 
 function! InstallRemotePlugin(info)
   UpdateRemotePlugins
@@ -24,6 +25,14 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kchmck/vim-coffee-script', {'for':'coffee'}
 call plug#end()
 
+" Show/hide invisible symbols
+nmap <leader>l :set list!<CR>
+" Invisible symbols settings
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set nolist
+
+" Colors settings
 if &term!="xterm"
   syntax enable
   set background=dark
@@ -117,16 +126,10 @@ let g:syntastic_error_symbol = "»"
 " }}}
 
 
-
-autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-set listchars=tab:\|.,trail:.
-autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-set listchars=tab:\|.,trail:.
-
-autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-set listchars=tab:\|.,trail:.
-
-autocmd FileType php set tabstop=2 | set shiftwidth=2 
+"autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+"autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+"autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+"autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 
 "{{{ FZF setup
 let g:fzf_layout = { 'down': '~40%' }
