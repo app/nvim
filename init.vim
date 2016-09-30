@@ -37,7 +37,7 @@ Plug 'kchmck/vim-coffee-script', {'for':'coffee'}
 call plug#end()
 
 " Show/hide invisible symbols
-nmap <leader>l :set list!<CR>
+nmap <leader>l :set list!<CR>:set cursorcolumn!<CR>
 " Invisible symbols settings
 set showbreak=↪\ 
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
