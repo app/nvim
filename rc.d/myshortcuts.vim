@@ -26,3 +26,25 @@ map сс <leader>c<space>
 
 " Select all
 nmap <C-a> ggVG
+
+" Generate doc comments
+autocmd FileType javascript nmap <silent> <leader>d :JsDoc<CR>
+autocmd FileType javascript nmap <silent> cd :JsDoc<CR>
+
+" Search selected text
+vnorem // y/<c-r>"<cr>
+vnorem * y/<c-r>"<cr>
+" Search and replace selected text
+vmap <Leader>r "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
+vmap <C-h> "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
+vmap /r "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
+
+" Match pair setup
+set mps+=<:>
+au FileType c,cpp,java,javascript set mps+==:;
+
+" Wrapped line movement
+noremap k gk
+vnoremap k gk
+noremap j gj
+vnoremap j gj

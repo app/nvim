@@ -27,6 +27,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx']  }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
@@ -154,7 +155,35 @@ let g:syntastic_error_symbol = "»"
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_buffers_jump = 1
 
+function! SearchWordWithAg()
+  execute 'Ag' expand('<cword>')
+endfunction
+
+function! SearchVisualSelectionWithAg() range
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  let old_clipboard = &clipboard
+  set clipboard&
+  normal! ""gvy
+  let selection = getreg('"')
+  call setreg('"', old_reg, old_regtype)
+  let &clipboard = old_clipboard
+  execute 'Ag' selection
+endfunction
+" Up search for .git folder
+fun! s:fzf_root()
+	let path = finddir(".git", expand("%:p:h").";")
+	return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
+endfun
+" Open file with fzf search from current folder
 nnoremap <silent> <C-p> :Files<CR>
+" Open file with fzf search from .git place folder
+nnoremap <silent> <C-o> :exe 'Files ' . <SID>fzf_root()<CR>
+nnoremap <silent> <leader>p :exe 'Files ' . <SID>fzf_root()<CR>
+
+nnoremap <silent> K :call SearchWordWithAg()<CR>
+vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
+
 nnoremap <silent> <C-f> :Lines<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
@@ -168,5 +197,8 @@ autocmd BufReadPost *
             \   exe "normal g`\"" |
             \ endif
 
+" jsdoc plugin setup
+let g:jsdoc_enable_es6=1
+let g:jsdoc_input_description=1
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
