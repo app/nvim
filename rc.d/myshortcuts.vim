@@ -48,3 +48,10 @@ noremap k gk
 vnoremap k gk
 noremap j gj
 vnoremap j gj
+
+" FZF git files
+nmap gf :GFiles<CR>
+nmap gs :GFiles?<CR>
+
+" Highlight off
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
