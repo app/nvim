@@ -152,7 +152,8 @@ let g:syntastic_error_symbol = "»"
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 
 "{{{ FZF setup
-let g:fzf_layout = { 'down': '~40%' }
+"let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_buffers_jump = 1
 
 function! SearchWordWithAg()
