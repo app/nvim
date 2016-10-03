@@ -26,3 +26,6 @@ map сс <leader>c<space>
 
 " Select all
 nmap <C-a> ggVG
+
+" Skipto undescore symbol
+nmap <leader>w f_
