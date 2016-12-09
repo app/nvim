@@ -27,6 +27,8 @@ map сс <leader>c<space>
 " Select all
 nmap <C-a> ggVG
 
+" Skipto undescore symbol
+nmap <leader>w f_
 " Generate doc comments
 autocmd FileType javascript nmap <silent> <leader>d :JsDoc<CR>
 autocmd FileType javascript nmap <silent> cd :JsDoc<CR>
