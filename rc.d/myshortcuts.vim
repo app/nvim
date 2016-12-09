@@ -57,3 +57,7 @@ nmap gs :GFiles?<CR>
 
 " Highlight off
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+
+" Tern commands map
+nmap <leader>td :TernDef<CR>
+nmap <leader>tr :TernRename<CR>
