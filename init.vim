@@ -34,7 +34,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'kchmck/vim-coffee-script', {'for':'coffee'}
+Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
+Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 call plug#end()
 
 " Show/hide invisible symbols
