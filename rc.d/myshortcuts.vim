@@ -61,3 +61,7 @@ nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 " Tern commands map
 nmap <leader>td :TernDef<CR>
 nmap <leader>tr :TernRename<CR>
+
+" next/prev error navigation mapping
+nmap <leader>n :lnext<CR>
+nmap <leader>p :lprevious<CR>
