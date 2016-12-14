@@ -104,17 +104,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-" use jshint
-" sudo npm install jshint -g
-" jshint should be installed and available in your command line 
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = ['eslint']
 " installed by
 " sudo gem install rake rspec bundler pg_query && sudo gem install sqlint
 let g:syntastic_sql_checkers = ['sqlint']
 
 " show any linting errors immediately
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
 
 let g:syntastic_warning_symbol = "»"
 let g:syntastic_error_symbol = "»"
