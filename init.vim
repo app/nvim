@@ -36,6 +36,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
+Plug 'app/vim-gitbranch'
 call plug#end()
 
 " Show/hide invisible symbols
@@ -58,6 +59,15 @@ endif
 "vim-airline show buffers on window top
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" Show git branch name in status line
+try
+  if gitbranch#name()!=""
+    let g:airline_section_c = '%{g:airline_symbols.branch} %{gitbranch#name()} %{g:airline_left_alt_sep} %{@%}'
+  endif
+catch
+  echo "It seems to me 'vim-gitbranch' plugin missed. Install it and you'll see git brand name in status line"
+endtry
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
