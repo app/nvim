@@ -41,7 +41,7 @@ call plug#end()
 " Show/hide invisible symbols
 nmap <leader>l :set list!<CR>:set cursorcolumn!<CR>
 " Invisible symbols settings
-set showbreak=↪\ 
+set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set nolist
 
@@ -106,6 +106,8 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_checkers = ['eslint']
+let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_coffee_checkers = ['coffeelint', 'coffee']
 " installed by
 " sudo gem install rake rspec bundler pg_query && sudo gem install sqlint
 let g:syntastic_sql_checkers = ['sqlint']
@@ -116,6 +118,8 @@ let g:syntastic_check_on_wq = 1
 
 let g:syntastic_warning_symbol = "»"
 let g:syntastic_error_symbol = "»"
+" status line format
+let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 " }}}
 
 "autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
@@ -145,8 +149,8 @@ function! SearchVisualSelectionWithAg() range
 endfunction
 " Up search for .git folder
 fun! s:fzf_root()
-	let path = finddir(".git", expand("%:p:h").";")
-	return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
+  let path = finddir(".git", expand("%:p:h").";")
+  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
 endfun
 " Open file with fzf search from current folder
 nnoremap <silent> <C-p> :Files<CR>
