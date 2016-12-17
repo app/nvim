@@ -37,6 +37,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
+Plug 'app/vim-kiri', { 'for': 'kiri'}
 call plug#end()
 
 " Show/hide invisible symbols
