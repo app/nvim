@@ -19,13 +19,15 @@ call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"Plug 'pbogut/deoplete-padawan', { 'for': 'php' }
+Plug 'php-vim/phpcd.vim', { 'for': 'php' , 'do': 'composer update' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx']  }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline'
@@ -33,7 +35,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
@@ -71,6 +74,8 @@ catch
 endtry
 
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
@@ -81,12 +86,15 @@ let g:deoplete#omni#functions.javascript = [
 \]
 " let g:deoplete#disable_auto_complete = 1
 set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+"let g:deoplete#sources = {}
+"let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 "autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsExpandTrigger="<C-j>"
+" Tab complition navigation from top to bottom not backword
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 "inoremap <expr><TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
 "Competion selection from top to bottom. Default is from bottom to top
