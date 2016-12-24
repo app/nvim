@@ -20,11 +20,9 @@ Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-"Plug 'pbogut/deoplete-padawan', { 'for': 'php' }
-Plug 'php-vim/phpcd.vim', { 'for': 'php' , 'do': 'composer update' }
+Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx']  }
@@ -74,8 +72,15 @@ catch
 endtry
 
 let g:deoplete#enable_at_startup = 1
+" Please show snippets with short name in complition list
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
+" Switch off padawan's logfile
+"let g:deoplete#sources#padawan#log_file = ''
+
+" Close window with documentation after complition finished
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
