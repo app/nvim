@@ -39,6 +39,7 @@ Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
+"Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
 " Show/hide invisible symbols
@@ -204,3 +205,9 @@ let g:jsdoc_enable_es6=1
 let g:jsdoc_input_description=1
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
+
+" Used when you run 'PromptLineSnapshot' command
+let g:promptline_preset = {
+      \'a'    : [ '\h' ],
+      \'b'    : [ '\u' ],
+      \'c'    : [ '\w' ]}
