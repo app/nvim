@@ -207,7 +207,9 @@ let g:jsdoc_input_description=1
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
 
 " Used when you run 'PromptLineSnapshot' command
-let g:promptline_preset = {
-      \'a'    : [ '\h' ],
-      \'b'    : [ '\u' ],
-      \'c'    : [ '\w' ]}
+"let g:promptline_preset = {
+        "\'a' : [ promptline#slices#host() ],
+        "\'b' : [ promptline#slices#user() ],
+        "\'c' : [ promptline#slices#cwd() ],
+        "\'y' : [ promptline#slices#vcs_branch() ],
+        "\'warn' : [ promptline#slices#last_exit_code() ]}
