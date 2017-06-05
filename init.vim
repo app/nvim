@@ -16,8 +16,11 @@ function! InstallRemotePlugin(info)
   UpdateRemotePlugins
 endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
-Plug 'scrooloose/syntastic'
-Plug 'Raimondi/delimitMate'
+"Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale' " syntacsic replacement
+"Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs' " delimitMate replacement
+Plug 'gavocanov/vim-js-indent'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
@@ -214,3 +217,7 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
         "\'c' : [ promptline#slices#cwd() ],
         "\'y' : [ promptline#slices#vcs_branch() ],
         "\'warn' : [ promptline#slices#last_exit_code() ]}
+"let g:ale_sign_column_always = 1
+let g:ale_fixers = { 'javascript': ['eslint']}
+" Auto fix command 
+command Afix ALEFix
