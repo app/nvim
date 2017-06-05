@@ -40,6 +40,7 @@ Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
+Plug 'mtscout6/syntastic-local-eslint.vim'
 call plug#end()
 
 " Show/hide invisible symbols
