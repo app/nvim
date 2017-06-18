@@ -153,7 +153,7 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 "autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 
-"{{{ FZF setup
+"{{{ FZF setup for open file with various search strategies 
 "let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_buffers_jump = 1
@@ -183,11 +183,14 @@ nnoremap <silent> <C-p> :Files<CR>
 " Open file with fzf search from .git place folder
 nnoremap <silent> <C-o> :exe 'Files ' . <SID>fzf_root()<CR>
 nnoremap <silent> <leader>p :exe 'Files ' . <SID>fzf_root()<CR>
-
+" Search word under cursor
 nnoremap <silent> K :call SearchWordWithAg()<CR>
 vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 
 nnoremap <silent> <C-f> :Lines<CR>
+" Search pattern inside files 
+nnoremap <silent> <leader>f :Ag<CR> 
+nnoremap <silent> F :Ag<CR> 
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " Search in most recently used
