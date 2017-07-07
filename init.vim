@@ -43,7 +43,6 @@ Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
-Plug 'mtscout6/syntastic-local-eslint.vim'
 call plug#end()
 
 " Show/hide invisible symbols
@@ -222,5 +221,6 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
         "\'warn' : [ promptline#slices#last_exit_code() ]}
 "let g:ale_sign_column_always = 1
 let g:ale_fixers = { 'javascript': ['eslint']}
+let g:ale_linters = { 'javascript': ['eslint']}
 " Auto fix command 
 command Afix ALEFix
