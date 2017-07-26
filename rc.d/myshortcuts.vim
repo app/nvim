@@ -19,10 +19,17 @@ inoremap <C-Q> <C-O>:q<CR>
 " Close curent buffer
 noremap <silent> <Leader>q :bd<CR>
 
+""" NerdCommenter setup
 " Toggle comments by pressing cc while in normal mode
 map cc <leader>c<space>
 " Cyrillic 'сс' :)
 map сс <leader>c<space>
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
 
 " Select all
 nmap <C-a> ggVG
