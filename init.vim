@@ -11,6 +11,7 @@ endif
 set cursorline
 set nu
 set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+set noshowmode
 
 function! InstallRemotePlugin(info)
   UpdateRemotePlugins
@@ -93,12 +94,16 @@ let g:deoplete#omni#functions.javascript = [
   \ 'tern#Complete',
   \ 'jspc#omni'
 \]
+let g:deoplete#sources#ternjs#types = 1 " Shows data type hints
+let g:deoplete#sources#ternjs#docs = 1 " Shows docs extracted from comments
 " let g:deoplete#disable_auto_complete = 1
 set completeopt=longest,menuone,preview
 "let g:deoplete#sources = {}
 "let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
+let g:tern_show_argument_hints = 'on_hold' " waits befor showing
+let g:tern_show_signature_in_pum = 1 " Show function signature hint
 "autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsExpandTrigger="<C-j>"
 " Tab complition navigation from top to bottom not backword
