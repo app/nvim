@@ -43,6 +43,7 @@ Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
+Plug 'jwalton512/vim-blade'
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
@@ -231,3 +232,4 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
 command Afix ALEFix
+autocmd BufNewFile,BufRead *.blade.php set filetype=blade
