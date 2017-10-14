@@ -237,10 +237,6 @@ command Afix ALEFix
 autocmd BufNewFile,BufRead *.blade.php set filetype=blade
 
 " Slim cursor shape in Insert mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-" insert mode - line
-let &t_SI .= "\<Esc>[5 q"
-"replace mode - underline
-let &t_SR .= "\<Esc>[4 q"
-"common - block
-let &t_EI .= "\<Esc>[3 q"
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+" Restore terminal cursor shape on exit. See :help guicursor
+au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
