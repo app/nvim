@@ -162,8 +162,8 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 
 "{{{ FZF setup for open file with various search strategies 
-"let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_buffers_jump = 1
 
 function! SearchWordWithAg()
@@ -198,7 +198,7 @@ vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 nnoremap <silent> <C-f> :Lines<CR>
 " Search pattern inside files 
 nnoremap <silent> <leader>f :Ag<CR> 
-nnoremap <silent> F :Ag<CR> 
+" nnoremap <silent> F :Ag<CR> 
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " Search in most recently used
@@ -231,3 +231,12 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
 command Afix ALEFix
+
+" Slim cursor shape in Insert mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+" insert mode - line
+let &t_SI .= "\<Esc>[5 q"
+"replace mode - underline
+let &t_SR .= "\<Esc>[4 q"
+"common - block
+let &t_EI .= "\<Esc>[3 q"
