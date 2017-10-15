@@ -74,7 +74,7 @@ nmap <leader>n :lnext<CR>
 nmap <leader>p :lprevious<CR>
 
 " build in terminal  go to normal mode
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 " Split windows navigation 
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
