@@ -90,3 +90,8 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Jumps between cpp/h files
+nnoremap <Leader>gc :e %<.c<CR>
+nnoremap <Leader>gp :e %<.cpp<CR>
+nnoremap <Leader>gh :e %<.h<CR>

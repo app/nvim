@@ -25,6 +25,7 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
+Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
