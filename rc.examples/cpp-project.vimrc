@@ -4,7 +4,7 @@
 " Whithout this file clang++ linter will generate a log of errors about header files 
 
 let currentDir = getcwd()
-let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT  
+let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT -Wno-overloaded-virtual 
   \-I/usr/include/qt4 
   \-I/usr/include/qt4/Qt 
   \-I/usr/include/qt4/Qt3Support 
@@ -26,6 +26,12 @@ let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT
   \-I/usr/include/qt4/QtXml 
   \-I/usr/include/qt4/QtXmlPatterns 
   \-I'.currentDir.'/src/lib 
+  \-I'.currentDir.'/src/lib/.ui 
+  \-I'.currentDir.'/src/lib/report 
+  \-I'.currentDir.'/src/lib/widgets 
+  \-I'.currentDir.'/src/lib/objects 
+  \-I'.currentDir.'/src/lib/dialogs 
+  \-I'.currentDir.'/src/lib/sys 
   \-I'.currentDir.'/src/lib/metadata 
   \-I'.currentDir.'/src/plugins 
   \-I'.currentDir.'/src/ananas 
