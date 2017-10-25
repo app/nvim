@@ -45,6 +45,7 @@ Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
 Plug 'jwalton512/vim-blade'
+Plug 'krisajenkins/vim-projectlocal'
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
@@ -229,6 +230,7 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
 "let g:ale_sign_column_always = 1
 let g:ale_fixers = { 'javascript': ['eslint']}
 let g:ale_linters = { 'javascript': ['eslint']}
+let g:ale_linters = {'cpp': ['clang','clangtidy','clangcheck']} " Use only this linters, no more :)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
