@@ -2,8 +2,9 @@
 "1. Install vim plugin https://github.com/krisajenkins/vim-projectlocal
 "2. Rename this file to .vimrc and drop it to c++ project's root folder
 " Whithout this file clang++ linter will generate a log of errors about header files 
+
 let currentDir = getcwd()
-let g:ale_cpp_clang_options = '-std=c++14 -Wall 
+let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT  
   \-I/usr/include/qt4 
   \-I/usr/include/qt4/Qt 
   \-I/usr/include/qt4/Qt3Support 
@@ -25,4 +26,8 @@ let g:ale_cpp_clang_options = '-std=c++14 -Wall
   \-I/usr/include/qt4/QtXml 
   \-I/usr/include/qt4/QtXmlPatterns 
   \-I'.currentDir.'/src/lib 
+  \-I'.currentDir.'/src/lib/metadata 
+  \-I'.currentDir.'/src/plugins 
+  \-I'.currentDir.'/src/ananas 
+  \-I'.currentDir.'/src/designer/formdesigner 
   \'
