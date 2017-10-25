@@ -25,6 +25,9 @@ let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT -Wno-overloaded-vi
   \-I/usr/include/qt4/QtUiTools 
   \-I/usr/include/qt4/QtXml 
   \-I/usr/include/qt4/QtXmlPatterns 
+  \-I'.currentDir.'/src/designer/.ui 
+  \-I'.currentDir.'/src/admin/.ui 
+  \-I'.currentDir.'/src/editor 
   \-I'.currentDir.'/src/lib 
   \-I'.currentDir.'/src/lib/.ui 
   \-I'.currentDir.'/src/lib/report 
