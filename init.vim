@@ -163,6 +163,7 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 "autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+autocmd FileType cpp set tabstop=4 | set shiftwidth=4 | set noexpandtab | set softtabstop=4 | set list
 
 "{{{ FZF setup for open file with various search strategies 
 let g:fzf_layout = { 'window': 'enew' }
