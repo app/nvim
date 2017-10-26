@@ -6,6 +6,7 @@
 let currentDir = getcwd()
 let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT -Wno-overloaded-virtual 
   \-I/usr/include/qt4 
+  \-I/usr/include/qt4/qdataschema 
   \-I/usr/include/qt4/Qt 
   \-I/usr/include/qt4/Qt3Support 
   \-I/usr/include/qt4/QtAssistant 
