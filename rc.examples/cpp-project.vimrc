@@ -38,6 +38,18 @@ let g:ale_cpp_clang_options = '-std=c++14 -Wall -DQT3_SUPPORT -Wno-overloaded-vi
   \-I'.currentDir.'/src/lib/sys 
   \-I'.currentDir.'/src/lib/metadata 
   \-I'.currentDir.'/src/plugins 
+  \-I'.currentDir.'/src/plugins/dbfield 
+  \-I'.currentDir.'/src/plugins/actionbutton 
+  \-I'.currentDir.'/src/plugins/catalogue 
+  \-I'.currentDir.'/src/plugins/combobox 
+  \-I'.currentDir.'/src/plugins/dbtable 
+  \-I'.currentDir.'/src/plugins/document 
+  \-I'.currentDir.'/src/plugins/grouptree 
+  \-I'.currentDir.'/src/plugins/journal 
+  \-I'.currentDir.'/src/plugins/report 
+  \-I'.currentDir.'/src/plugins/table 
+  \-I'.currentDir.'/src/plugins/.ui 
+  \-I'.currentDir.'/src/plugins/field 
   \-I'.currentDir.'/src/ananas 
   \-I'.currentDir.'/src/designer/formdesigner 
   \'
