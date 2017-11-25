@@ -163,7 +163,8 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 "autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-autocmd FileType cpp set tabstop=4 | set shiftwidth=4 | set noexpandtab | set softtabstop=4 | set list
+" autocmd FileType cpp set tabstop=4 | set shiftwidth=4 | set noexpandtab | set softtabstop=4
+autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set noexpandtab | set softtabstop=8
 
 "{{{ FZF setup for open file with various search strategies 
 let g:fzf_layout = { 'window': 'enew' }
@@ -230,8 +231,10 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
         "\'warn' : [ promptline#slices#last_exit_code() ]}
 "let g:ale_sign_column_always = 1
 let g:ale_fixers = { 'javascript': ['eslint']}
-let g:ale_linters = { 'javascript': ['eslint']}
-let g:ale_linters = {'cpp': ['clang']} " Use only this linters, no more :)
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'cpp': ['clang'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
