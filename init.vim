@@ -273,3 +273,10 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" At the moment there is a bug with snippets expantion
+" https://github.com/autozimu/LanguageClient-neovim/issues/379
+" Comment if fixed
+" Remove LanguageClient from completion soureces
+call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
+
