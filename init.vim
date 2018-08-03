@@ -171,6 +171,7 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set noexpandtab | set softtabstop=8
 
 "{{{ FZF setup for open file with various search strategies 
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -U -l -g ""'
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_buffers_jump = 1
