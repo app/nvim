@@ -78,9 +78,10 @@ catch
 endtry
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#num_processes = 1
 " Please show snippets with short name in complition list
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#set('ultisnips', 'min_pattern_length', 1)
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('ultisnips', 'min_pattern_length', 1)
 " Switch off padawan's logfile
 "let g:deoplete#sources#padawan#log_file = ''
 
