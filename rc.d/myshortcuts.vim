@@ -76,7 +76,7 @@ nmap <leader>p :lprevious<CR>
 " build in terminal  go to normal mode
 " tnoremap <Esc> <C-\><C-n>
 
-" Split windows navigation 
+" Split windows navigation
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -95,3 +95,6 @@ nnoremap <A-l> <C-w>l
 nnoremap <Leader>gc :e %<.c<CR>
 nnoremap <Leader>gp :e %<.cpp<CR>
 nnoremap <Leader>gh :e %<.h<CR>
+
+" Replace selection with default buffer without replacing buffer
+vnoremap <leader>p "_dP
