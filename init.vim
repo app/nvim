@@ -35,7 +35,8 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
 Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'SirVer/ultisnips'
@@ -50,6 +51,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
+Plug 'tpope/vim-liquid',
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
@@ -64,11 +67,12 @@ set nolist
 if &term!="xterm"
   syntax enable
   set background=dark
-  set t_Co=16
+  " set t_Co=16
   "set t_Co=256
-  let g:solarized_termcolors=16
+  " let g:solarized_termcolors=16
   "let g:solarized_termcolors=256
-  colorscheme solarized
+  " colorscheme solarized
+  colorscheme NeoSolarized
 endif
 "vim-airline show buffers on window top
 let g:airline#extensions#tabline#enabled = 1
@@ -279,5 +283,4 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " https://github.com/autozimu/LanguageClient-neovim/issues/379
 " Comment if fixed
 " Remove LanguageClient from completion soureces
-call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
-
+" call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
