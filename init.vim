@@ -25,6 +25,7 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
+Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
@@ -34,7 +35,8 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
 Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'SirVer/ultisnips'
@@ -44,6 +46,13 @@ Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
 Plug 'jwalton512/vim-blade'
+Plug 'krisajenkins/vim-projectlocal'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
+Plug 'tpope/vim-liquid',
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
@@ -58,11 +67,12 @@ set nolist
 if &term!="xterm"
   syntax enable
   set background=dark
-  set t_Co=16
+  " set t_Co=16
   "set t_Co=256
-  let g:solarized_termcolors=16
+  " let g:solarized_termcolors=16
   "let g:solarized_termcolors=256
-  colorscheme solarized
+  " colorscheme solarized
+  colorscheme NeoSolarized
 endif
 "vim-airline show buffers on window top
 let g:airline#extensions#tabline#enabled = 1
@@ -162,8 +172,11 @@ let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
 "autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
+" autocmd FileType cpp set tabstop=4 | set shiftwidth=4 | set noexpandtab | set softtabstop=4
+autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set noexpandtab | set softtabstop=8
 
 "{{{ FZF setup for open file with various search strategies 
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -U -l -g ""'
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_buffers_jump = 1
@@ -228,7 +241,10 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
         "\'warn' : [ promptline#slices#last_exit_code() ]}
 "let g:ale_sign_column_always = 1
 let g:ale_fixers = { 'javascript': ['eslint']}
-let g:ale_linters = { 'javascript': ['eslint']}
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'cpp': ['clang'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
@@ -241,3 +257,31 @@ autocmd BufNewFile,BufRead *.blade.php set filetype=blade
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 " Restore terminal cursor shape on exit. See :help guicursor
 au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+
+" LSP (Language Server Protocol) client setup.
+" Language server have to be installed in system. 
+" cquery - c/cpp language server command
+" Use this if you have to debug/check server behavior
+" \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+" \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+let g:LanguageClient_serverCommands = {
+    \ 'cpp': ['cquery'],
+    \ 'c': ['cquery'],
+    \ } 
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = fnamemodify($MYVIMRC,':h').'/settings.json'
+" Errors sign switched off since we using clang (via ale linter) for error detection
+let g:LanguageClient_diagnosticsSignsMax = 0 
+
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> gi :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" At the moment there is a bug with snippets expantion
+" https://github.com/autozimu/LanguageClient-neovim/issues/379
+" Comment if fixed
+" Remove LanguageClient from completion soureces
+" call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
