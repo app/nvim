@@ -53,7 +53,10 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
 Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'tpope/vim-liquid',
+Plug 'tpope/vim-liquid'
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
+
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
