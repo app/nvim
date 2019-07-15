@@ -98,3 +98,7 @@ nnoremap <Leader>gh :e %<.h<CR>
 
 " Replace selection with default buffer without replacing buffer
 vnoremap <leader>p "_dP
+
+" format selected code
+nmap <leader>a :Neoformat<CR>
+nmap <leader>a :Neoformat<CR>

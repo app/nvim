@@ -30,7 +30,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx']  }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline'
@@ -52,7 +52,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
-Plug 'tpope/vim-liquid',
+Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'tpope/vim-liquid'
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
+
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
 
@@ -231,6 +235,7 @@ let g:jsdoc_enable_es6=1
 let g:jsdoc_input_description=1
 
 source $HOME/.config/nvim/rc.d/myshortcuts.vim
+source $HOME/.config/nvim/rc.d/fold-comments.vim
 
 " Used when you run 'PromptLineSnapshot' command
 "let g:promptline_preset = {
@@ -240,11 +245,14 @@ source $HOME/.config/nvim/rc.d/myshortcuts.vim
         "\'y' : [ promptline#slices#vcs_branch() ],
         "\'warn' : [ promptline#slices#last_exit_code() ]}
 "let g:ale_sign_column_always = 1
-let g:ale_fixers = { 'javascript': ['eslint']}
+let g:ale_fixers = { 'html': ['tidy'], 'javascript': ['eslint']}
+let g:ale_linter_aliases = {'html': ['html', 'javascript']}
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint','tsserver'],
+\   'html': ['eslint'],
 \   'cpp': ['clang'],
 \}
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Auto fix command 
@@ -285,3 +293,5 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Comment if fixed
 " Remove LanguageClient from completion soureces
 " call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
+
+autocmd BufNewFile,BufRead *.liquid set filetype=javascript
