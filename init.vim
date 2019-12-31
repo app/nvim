@@ -17,8 +17,7 @@ function! InstallRemotePlugin(info)
   UpdateRemotePlugins
 endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
-"Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale' " syntacsic replacement
+Plug 'w0rp/ale' " syntastic replacement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs' " delimitMate replacement
 Plug 'gavocanov/vim-js-indent'
@@ -45,6 +44,8 @@ Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
 Plug 'app/vim-gitbranch'
 Plug 'app/vim-kiri', { 'for': 'kiri'}
+Plug 'app/func.vim', { 'for': 'func'}
+Plug 'app/fift.vim', { 'for': 'fift'}
 Plug 'jwalton512/vim-blade'
 Plug 'krisajenkins/vim-projectlocal'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -56,6 +57,8 @@ Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-liquid'
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
@@ -145,32 +148,6 @@ set splitbelow
   "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "augroup end
 
-
-"{{{ Syntastic setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1 " auto open error list if errors found
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_checkers = ['eslint']
-let g:syntastic_json_checkers = ['jsonlint']
-let g:syntastic_coffee_checkers = ['coffeelint', 'coffee']
-" installed by
-" sudo gem install rake rspec bundler pg_query && sudo gem install sqlint
-let g:syntastic_sql_checkers = ['sqlint']
-
-" show any linting errors immediately
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_warning_symbol = "»"
-let g:syntastic_error_symbol = "»"
-" status line format
-let g:syntastic_stl_format = "%E{E:%fe(%e) }%W{W:%fw(%w)}"
-" }}}
-
 "autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 "autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
@@ -244,10 +221,12 @@ source $HOME/.config/nvim/rc.d/fold-comments.vim
         "\'y' : [ promptline#slices#vcs_branch() ],
         "\'warn' : [ promptline#slices#last_exit_code() ]}
 "let g:ale_sign_column_always = 1
-let g:ale_fixers = { 'html': ['tidy'], 'javascript': ['eslint']}
+let g:ale_fixers = { 'html': ['tidy'], 'javascript': ['eslint'],'javascript.jsx': ['eslint'] }
 let g:ale_linter_aliases = {'html': ['html', 'javascript']}
 let g:ale_linters = {
 \   'javascript': ['eslint','tsserver'],
+\   'javascript.jsx': ['eslint','tsserver'],
+\   'jsx': ['eslint','tsserver'],
 \   'html': ['eslint'],
 \   'cpp': ['clang'],
 \}
@@ -294,3 +273,4 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
 
 autocmd BufNewFile,BufRead *.liquid set filetype=javascript
+let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' } }

@@ -21,7 +21,10 @@ noremap <silent> <Leader>q :bd<CR>
 
 """ NerdCommenter setup
 " Toggle comments by pressing cc while in normal mode
-map cc <leader>c<space>
+" map cc <leader>c<space>
+map cc <plug>NERDCommenterToggle
+map cx :call AltComment()<CR>
+map <leader>cc :call AltComment()<CR>
 " Cyrillic 'сс' :)
 map сс <leader>c<space>
 " Add spaces after comment delimiters by default
@@ -30,6 +33,13 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
+function! AltComment()
+  :execute "normal \<plug>NERDCommenterAltDelims"
+  :execute "normal \<plug>NERDCommenterToggle"
+  :execute "normal \<plug>NERDCommenterAltDelims"
+endfunction
+
+
 
 " Select all
 nmap <C-a> ggVG
