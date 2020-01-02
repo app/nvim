@@ -5,7 +5,6 @@ set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-
 " Add new line below in Insert mode
 imap <C-o> <esc>o
 
@@ -39,8 +38,6 @@ function! AltComment()
   :execute "normal \<plug>NERDCommenterAltDelims"
 endfunction
 
-
-
 " Select all
 nmap <C-a> ggVG
 
@@ -56,6 +53,7 @@ vnorem * y/<c-r>"<cr>
 " Search and replace selected text
 vmap <Leader>r "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
 vmap <C-h> "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
+nmap <C-h> viw"sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
 vmap /r "sy:%s/<C-R>=substitute(@s,"\n",'\\n','g')<CR>/
 
 " Match pair setup
@@ -109,6 +107,3 @@ nnoremap <Leader>gh :e %<.h<CR>
 " Replace selection with default buffer without replacing buffer
 vnoremap <leader>p "_dP
 
-" format selected code
-nmap <leader>a :Neoformat<CR>
-nmap <leader>a :Neoformat<CR>
