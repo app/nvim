@@ -17,48 +17,43 @@ function! InstallRemotePlugin(info)
   UpdateRemotePlugins
 endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
-Plug 'w0rp/ale' " syntastic replacement
-"Plug 'Raimondi/delimitMate'
+Plug 'dense-analysis/ale' "Asynchronous Lint Engine (syntastic replacement)
 Plug 'jiangmiao/auto-pairs' " delimitMate replacement
-Plug 'gavocanov/vim-js-indent'
-Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')}
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'gavocanov/vim-js-indent'
+Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')} " asynchronous autocompletion
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } " deoplete for js
 Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
 Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder external tool
+Plug 'junegunn/fzf.vim' " fuzzy finder vim commands
+Plug 'ervandew/supertab' " Use tab for completeopt everywhere
+Plug 'scrooloose/nerdcommenter' " toggle comments with 'cc' key press
 Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline' " visual decoration 
+Plug 'vim-airline/vim-airline-themes' " visual decoration
 Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
-Plug 'airblade/vim-gitgutter'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter' " git status marks for changed lines
+Plug 'michaeljsmith/vim-indent-object' " select by indent
+Plug 'SirVer/ultisnips' " snippets library
 Plug 'honza/vim-snippets'
 Plug 'kchmck/vim-coffee-script', { 'for':'coffee' }
 Plug 'tomlion/vim-solidity', { 'for': ['solidity'] }
-Plug 'app/vim-gitbranch'
-Plug 'app/vim-kiri', { 'for': 'kiri'}
-Plug 'app/func.vim', { 'for': 'func'}
-Plug 'app/fift.vim', { 'for': 'fift'}
-Plug 'jwalton512/vim-blade'
-Plug 'krisajenkins/vim-projectlocal'
+Plug 'app/vim-gitbranch' " single function - returns current git branch name
+Plug 'app/vim-kiri', { 'for': 'kiri'} " experimental. You do not need it
+Plug 'jwalton512/vim-blade', { 'for': 'blade'} " blade templates for Laravel
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
 Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'tpope/vim-liquid'
+Plug 'tpope/vim-liquid',{ 'for': 'liquid'} " Shopify templates syntax language
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
@@ -74,11 +69,6 @@ set nolist
 if &term!="xterm"
   syntax enable
   set background=dark
-  " set t_Co=16
-  "set t_Co=256
-  " let g:solarized_termcolors=16
-  "let g:solarized_termcolors=256
-  " colorscheme solarized
   colorscheme NeoSolarized
 endif
 "vim-airline show buffers on window top
@@ -122,37 +112,14 @@ let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 let g:tern_show_argument_hints = 'on_hold' " waits befor showing
 let g:tern_show_signature_in_pum = 1 " Show function signature hint
-"autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsExpandTrigger="<C-j>"
 " Tab complition navigation from top to bottom not backword
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
-"inoremap <expr><TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-"Competion selection from top to bottom. Default is from bottom to top
-"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Let plugins show effects after 500ms, not 4s
 set updatetime=500
 set splitbelow
 
-"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" omnifuncs
-"augroup omnifuncs
-  "autocmd!
-  "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"augroup end
-
-"autocmd FileType coffee set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-"autocmd FileType javascript set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-"autocmd FileType gt-script set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-"autocmd FileType php set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
-" autocmd FileType cpp set tabstop=4 | set shiftwidth=4 | set noexpandtab | set softtabstop=4
 autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set noexpandtab | set softtabstop=8
 
 "{{{ FZF setup for open file with various search strategies 
@@ -265,12 +232,6 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-" At the moment there is a bug with snippets expantion
-" https://github.com/autozimu/LanguageClient-neovim/issues/379
-" Comment if fixed
-" Remove LanguageClient from completion soureces
-" call deoplete#custom#option('ignore_sources', {'_': ['LanguageClient']})
 
 autocmd BufNewFile,BufRead *.liquid set filetype=javascript
 let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' } }
