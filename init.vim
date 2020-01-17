@@ -9,7 +9,7 @@ if exists("$SSH_TTY")
   map "+p :r!xclip -o -sel clip
 endif
 set cursorline
-set nu
+set nu rnu
 set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 set noshowmode
 
@@ -33,7 +33,12 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline' " visual decoration 
 Plug 'vim-airline/vim-airline-themes' " visual decoration
+" color themes
+Plug 'lifepillar/vim-solarized8' 
+Plug 'tomasiser/vim-code-dark'
 Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
+Plug 'NLKNguyen/papercolor-theme' " Color theme with dark and light versions 
+
 Plug 'airblade/vim-gitgutter' " git status marks for changed lines
 Plug 'michaeljsmith/vim-indent-object' " select by indent
 Plug 'SirVer/ultisnips' " snippets library
@@ -65,12 +70,20 @@ set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set nolist
 
-" Colors settings
+" Colors settings for syntax highlighting
 if &term!="xterm"
+  set termguicolors " true colors on
+  " set t_Co=256
   syntax enable
   set background=dark
+
+  " colorscheme codedark
   colorscheme NeoSolarized
+  " colorscheme PaperColor
+  " colorscheme solarized8
+  " colorscheme solarized8_flat
 endif
+
 "vim-airline show buffers on window top
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -104,10 +117,12 @@ let g:deoplete#omni#functions.javascript = [
 \]
 let g:deoplete#sources#ternjs#types = 1 " Shows data type hints
 let g:deoplete#sources#ternjs#docs = 1 " Shows docs extracted from comments
+let g:deoplete#sources#ternjs#case_insensitive = 1
+let g:deoplete#sources#ternjs#filetypes = ['javascript.jsx']
 " let g:deoplete#disable_auto_complete = 1
 set completeopt=longest,menuone,preview
 "let g:deoplete#sources = {}
-"let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 let g:tern_show_argument_hints = 'on_hold' " waits befor showing
@@ -191,9 +206,9 @@ source $HOME/.config/nvim/rc.d/fold-comments.vim
 let g:ale_fixers = { 'html': ['tidy'], 'javascript': ['eslint'],'javascript.jsx': ['eslint'] }
 let g:ale_linter_aliases = {'html': ['html', 'javascript']}
 let g:ale_linters = {
-\   'javascript': ['eslint','tsserver'],
-\   'javascript.jsx': ['eslint','tsserver'],
-\   'jsx': ['eslint','tsserver'],
+\   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
+\   'jsx': ['eslint'],
 \   'html': ['eslint'],
 \   'cpp': ['clang'],
 \}
@@ -207,7 +222,8 @@ command Afix ALEFix
 autocmd BufNewFile,BufRead *.blade.php set filetype=blade
 
 " Slim cursor shape in Insert mode
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+" set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+set guicursor=n-v-c:hor20-Cursor/lCursor-blinkoff400-blinkon250,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 " Restore terminal cursor shape on exit. See :help guicursor
 au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 
