@@ -28,7 +28,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 Plug 'junegunn/fzf.vim' " fuzzy finder vim commands
 Plug 'ervandew/supertab' " Use tab for completeopt everywhere
 Plug 'scrooloose/nerdcommenter' " toggle comments with 'cc' key press
-Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
+" Do we need this if using deoplete-ternjs ?
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline' " visual decoration 
@@ -123,10 +124,10 @@ let g:deoplete#sources#ternjs#filetypes = ['javascript.jsx']
 set completeopt=longest,menuone,preview
 "let g:deoplete#sources = {}
 " let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-let g:tern_show_argument_hints = 'on_hold' " waits befor showing
-let g:tern_show_signature_in_pum = 1 " Show function signature hint
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
+" let g:tern_show_argument_hints = 'on_hold' " waits befor showing
+" let g:tern_show_signature_in_pum = 1 " Show function signature hint
 let g:UltiSnipsExpandTrigger="<C-j>"
 " Tab complition navigation from top to bottom not backword
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -165,8 +166,9 @@ fun! s:fzf_root()
 endfun
 " Open file with fzf search from current folder
 nnoremap <silent> <C-p> :Files<CR>
+" Open files listed with git ls-files command
+nnoremap <silent> <C-o> :GFiles<CR>
 " Open file with fzf search from .git place folder
-nnoremap <silent> <C-o> :exe 'Files ' . <SID>fzf_root()<CR>
 nnoremap <silent> <leader>p :exe 'Files ' . <SID>fzf_root()<CR>
 " Search word under cursor
 nnoremap <silent> K :call SearchWordWithAg()<CR>
