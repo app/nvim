@@ -10,6 +10,8 @@ if exists("$SSH_TTY")
 endif
 set cursorline
 set nu rnu
+autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 set tabstop=2 | set shiftwidth=2 | set expandtab| set softtabstop=2| set list
 set noshowmode
 
