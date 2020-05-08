@@ -41,6 +41,9 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'tomasiser/vim-code-dark'
 Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
 Plug 'NLKNguyen/papercolor-theme' " Color theme with dark and light versions 
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'airblade/vim-gitgutter' " git status marks for changed lines
 Plug 'michaeljsmith/vim-indent-object' " select by indent
@@ -81,7 +84,10 @@ if &term!="xterm"
   set background=dark
 
   " colorscheme codedark
-  colorscheme NeoSolarized
+  " colorscheme NeoSolarized
+  colorscheme nord
+  " colorscheme gruvbox
+  " colorscheme gruvbox-material
   " colorscheme PaperColor
   " colorscheme solarized8
   " colorscheme solarized8_flat
@@ -101,7 +107,6 @@ catch
 endtry
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#num_processes = 1
 " Please show snippets with short name in complition list
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#source('ultisnips', 'min_pattern_length', 1)
@@ -111,18 +116,10 @@ call deoplete#custom#source('ultisnips', 'min_pattern_length', 1)
 " Close window with documentation after complition finished
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
 let g:deoplete#sources#ternjs#types = 1 " Shows data type hints
 let g:deoplete#sources#ternjs#docs = 1 " Shows docs extracted from comments
 let g:deoplete#sources#ternjs#case_insensitive = 1
-let g:deoplete#sources#ternjs#filetypes = ['javascript.jsx']
+let g:deoplete#sources#ternjs#filetypes = ['javascript.jsx'] "Add extra filetypes
 " let g:deoplete#disable_auto_complete = 1
 set completeopt=longest,menuone,preview
 "let g:deoplete#sources = {}
