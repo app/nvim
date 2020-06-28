@@ -32,7 +32,7 @@ Plug 'ervandew/supertab' " Use tab for completeopt everywhere
 Plug 'scrooloose/nerdcommenter' " toggle comments with 'cc' key press
 " Do we need this if using deoplete-ternjs ?
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] } " JavaScript Parameter Complete
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline' " visual decoration 
 Plug 'vim-airline/vim-airline-themes' " visual decoration
@@ -63,9 +63,8 @@ Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-liquid',{ 'for': 'liquid'} " Shopify templates syntax language
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'yuezk/vim-js', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " javascript highliging and indentation
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
 
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
@@ -85,8 +84,8 @@ if &term!="xterm"
   set background=dark
 
   " colorscheme codedark
-  " colorscheme NeoSolarized
-  colorscheme nord
+  colorscheme NeoSolarized
+  " colorscheme nord
   " colorscheme gruvbox
   " colorscheme gruvbox-material
   " colorscheme PaperColor
