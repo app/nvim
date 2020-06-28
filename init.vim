@@ -64,7 +64,8 @@ Plug 'tpope/vim-liquid',{ 'for': 'liquid'} " Shopify templates syntax language
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'yuezk/vim-js', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] }
 
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
