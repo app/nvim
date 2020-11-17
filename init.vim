@@ -39,7 +39,7 @@ Plug 'vim-airline/vim-airline-themes' " visual decoration
 " color themes
 Plug 'lifepillar/vim-solarized8' 
 Plug 'tomasiser/vim-code-dark'
-Plug 'iCyMind/NeoSolarized' " needed for gvim/MacVim and truecolor support
+Plug 'overcache/NeoSolarized' " needed for gvim/MacVim and truecolor support
 Plug 'NLKNguyen/papercolor-theme' " Color theme with dark and light versions 
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
@@ -65,6 +65,7 @@ Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " javascript highliging and indentation
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
+Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
 
 "Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
 call plug#end()
