@@ -117,6 +117,13 @@ call deoplete#custom#source('ultisnips', 'min_pattern_length', 1)
 " Close window with documentation after complition finished
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+call deoplete#custom#var('omni', 'functions', {
+\ 'javascript': ['javascriptcomplete#CompleteJS']
+\ })
+call deoplete#custom#var('omni', 'input_patterns', {
+\ 'javascript': '[^. *\t]\.\w*',
+\ })
+
 let g:deoplete#sources#ternjs#types = 1 " Shows data type hints
 let g:deoplete#sources#ternjs#docs = 1 " Shows docs extracted from comments
 let g:deoplete#sources#ternjs#case_insensitive = 1
