@@ -22,7 +22,6 @@ endfunction
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'dense-analysis/ale' "Asynchronous Lint Engine (syntastic replacement)
 Plug 'jiangmiao/auto-pairs' " delimitMate replacement
-" Plug 'gavocanov/vim-js-indent'
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')} " asynchronous autocompletion
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } " deoplete for js
 Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
@@ -31,8 +30,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 Plug 'junegunn/fzf.vim' " fuzzy finder vim commands
 Plug 'ervandew/supertab' " Use tab for completeopt everywhere
 Plug 'scrooloose/nerdcommenter' " toggle comments with 'cc' key press
-" Do we need this if using deoplete-ternjs ?
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm -g i tern', 'for': ['javascript', 'javascript.jsx']  }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] } " JavaScript Parameter Complete
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'vim-airline/vim-airline' " visual decoration 
