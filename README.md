@@ -14,9 +14,11 @@ Clone
 ```
 git clone https://github.com/app/nvim.git ~/.config/nvim
 ```
-Inside neovim type  
+Install plugins
 ```
-:PlugUpdate
-:UpdateRemotePlugins
+vim +UpdateRemotePlugins +PlugUpdate +qall
 ```
-Restart neovim
+Start neovim
+```
+nvim
+```
