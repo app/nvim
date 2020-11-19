@@ -17,5 +17,6 @@ git clone https://github.com/app/nvim.git ~/.config/nvim
 Inside neovim type  
 ```
 :PlugUpdate
+:UpdateRemotePlugins
 ```
 Restart neovim
