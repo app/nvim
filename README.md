@@ -6,10 +6,6 @@ First install neovim
 ```
 sudo apt install neovim
 ```
-Create folder  
-```
-mkdir ~/.config  
-```
 Clone  
 ```
 git clone https://github.com/app/nvim.git ~/.config/nvim
