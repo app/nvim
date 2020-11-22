@@ -12,7 +12,7 @@ git clone https://github.com/app/nvim.git ~/.config/nvim
 ```
 Install plugins
 ```
-vim +UpdateRemotePlugins +PlugUpdate +qall
+nvim +UpdateRemotePlugins +PlugUpdate +qall
 ```
 Start neovim
 ```
