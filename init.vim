@@ -281,4 +281,7 @@ nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 autocmd BufNewFile,BufRead *.liquid set filetype=javascript
-let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' } }
+let g:NERDCustomDelimiters = {
+      \'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' },
+      \'javascript.jsx': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' }
+      \}
