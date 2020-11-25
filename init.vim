@@ -65,7 +65,8 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " ja
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
 Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
 
-"Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
+" Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
+" Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
 call plug#end()
 
 " Show/hide invisible symbols
@@ -92,9 +93,11 @@ if &term!="xterm"
   " colorscheme solarized8_flat
 endif
 
-"vim-airline show buffers on window top
+" vim-airline show buffers on window top
 let g:airline#extensions#tabline#enabled = 1
+
 let g:airline_powerline_fonts = 1
+" let g:tmuxline_powerline_separators = 0
 
 " Show git branch name in status line
 try
