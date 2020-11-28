@@ -24,7 +24,7 @@ Plug 'dense-analysis/ale' "Asynchronous Lint Engine (syntastic replacement)
 Plug 'jiangmiao/auto-pairs' " delimitMate replacement
 Plug 'Shougo/deoplete.nvim', {'do':function('InstallRemotePlugin')} " asynchronous autocompletion
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } " deoplete for js
-Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
+" Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
 Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder external tool
 Plug 'junegunn/fzf.vim' " fuzzy finder vim commands
@@ -42,6 +42,8 @@ Plug 'NLKNguyen/papercolor-theme' " Color theme with dark and light versions
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'jnurmine/Zenburn'
 
 Plug 'airblade/vim-gitgutter' " git status marks for changed lines
 Plug 'michaeljsmith/vim-indent-object' " select by indent
@@ -66,7 +68,7 @@ Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " j
 Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
 
 " Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
-" Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
+Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
 call plug#end()
 
 " Show/hide invisible symbols
@@ -81,8 +83,9 @@ if &term!="xterm"
   set termguicolors " true colors on
   " set t_Co=256
   syntax enable
-  set background=dark
+  " set background=dark
 
+  " colorscheme one
   " colorscheme codedark
   colorscheme NeoSolarized
   " colorscheme nord
@@ -147,7 +150,7 @@ set splitbelow
 
 autocmd FileType cpp set tabstop=8 | set shiftwidth=8 | set noexpandtab | set softtabstop=8
 
-"{{{ FZF setup for open file with various search strategies 
+"{{{ FZF setup for open file with various search strategies
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -U -l -g ""'
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'down': '~40%' }
@@ -207,9 +210,9 @@ vnoremap <silent> K :call SearchVisualSelectionWithGitGrep()<CR>
 " vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 
 nnoremap <silent> <C-f> :Lines<CR>
-" Search pattern inside files 
-nnoremap <silent> <leader>f :Ag<CR> 
-" nnoremap <silent> F :Ag<CR> 
+" Search pattern inside files
+nnoremap <silent> <leader>f :Ag<CR>
+" nnoremap <silent> F :Ag<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " Search in most recently used
@@ -249,11 +252,11 @@ let g:ale_linters = {
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-" Auto fix command 
+" Auto fix command
 command Afix ALEFix
 
 " blade template engine file type detection
-autocmd BufNewFile,BufRead *.blade.php set filetype=blade
+" autocmd BufNewFile,BufRead *.blade.php set filetype=blade
 
 " Slim cursor shape in Insert mode
 " set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -262,7 +265,7 @@ set guicursor=n-v-c:hor20-Cursor/lCursor-blinkoff400-blinkon250,i-ci:ver25-Curso
 au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 
 " LSP (Language Server Protocol) client setup.
-" Language server have to be installed in system. 
+" Language server have to be installed in system.
 " cquery - c/cpp language server command
 " Use this if you have to debug/check server behavior
 " \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
@@ -270,7 +273,7 @@ au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor
 let g:LanguageClient_serverCommands = {
     \ 'cpp': ['cquery'],
     \ 'c': ['cquery'],
-    \ } 
+    \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = fnamemodify($MYVIMRC,':h').'/settings.json'
 " Errors sign switched off since we using clang (via ale linter) for error detection
