@@ -1,3 +1,10 @@
+" Show/hide invisible symbols
+nmap <leader>l :set list!<CR>:set cursorcolumn!<CR>
+" Invisible symbols settings
+set showbreak=↪\
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set nolist
+
 " Russian keyboard layous support
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -106,4 +113,12 @@ nnoremap <Leader>gh :e %<.h<CR>
 
 " Replace selection with default buffer without replacing buffer
 vnoremap <leader>p "_dP
+
+" Fix home/end key in all modes
+" map <esc>OH <home>
+" cmap <esc>OH <home>
+" imap <esc>OH <home>
+" map <esc>OF <end>
+" cmap <esc>OF <end>
+" imap <esc>OF <end>
 
