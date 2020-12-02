@@ -64,7 +64,11 @@ syntax enable
 set background=dark
 if &term!="xterm"
   set termguicolors " true colors on
-  colorscheme NeoSolarized
+  try
+    colorscheme NeoSolarized
+  catch
+    echo "Warning: Please check NeoSolarized plugin installed"
+  endtry
 endif
 
 set updatetime=500 " Let plugins show effects after 500ms, not 4s

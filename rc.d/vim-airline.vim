@@ -11,6 +11,6 @@ if has_key(plugs, 'vim-airline')
       let g:airline_section_c = '%{g:airline_symbols.branch} %{gitbranch#name()} %{g:airline_left_alt_sep} %{@%}'
     endif
   catch
-    echo "It seems to me 'vim-gitbranch' plugin missed. Install it and you'll see git brand name in status line"
+    echo "Warning: It seems to me 'vim-gitbranch' plugin missed. Install it and you'll see git brand name in status line"
   endtry
 endif
