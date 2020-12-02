@@ -66,9 +66,10 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " javascript highliging and indentation
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
 Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
+Plug 'caenrique/nvim-toggle-terminal'
 
 " Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
-Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
+" Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
 call plug#end()
 
 " Show/hide invisible symbols
@@ -229,9 +230,6 @@ autocmd BufReadPost *
 let g:jsdoc_enable_es6=1
 let g:jsdoc_input_description=1
 
-source $HOME/.config/nvim/rc.d/myshortcuts.vim
-source $HOME/.config/nvim/rc.d/fold-comments.vim
-
 " Used when you run 'PromptLineSnapshot' command
 "let g:promptline_preset = {
         "\'a' : [ promptline#slices#host() ],
@@ -291,3 +289,5 @@ let g:NERDCustomDelimiters = {
       \'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' },
       \'javascript.jsx': { 'left': '//', 'right': '', 'leftAlt': '{/*','rightAlt': '*/}' }
       \}
+
+runtime! rc.d/*.vim
