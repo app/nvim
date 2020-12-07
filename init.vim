@@ -8,6 +8,7 @@ call plug#begin()
   Plug 'dense-analysis/ale' "Asynchronous Lint Engine (syntastic replacement)
   Plug 'jiangmiao/auto-pairs' " delimitMate replacement
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous autocompletion
+  Plug 'ncm2/float-preview.nvim', " Preview window wihout current line shift :) Will be deprecated in nvim 5.0?
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } " deoplete for js
   " Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
   Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
