@@ -25,6 +25,9 @@ if has_key(plugs, 'deoplete.nvim')
     set completeopt=longest,menuone,preview
     "let g:deoplete#sources = {}
     " let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+
+    " Workaround. See this issue https://github.com/carlitux/deoplete-ternjs/issues/88
+    call deoplete#custom#option('num_processes', 4)
   catch
     echo "Warning: Please check deoplete.nvim plugin installed"
   endtry
