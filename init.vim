@@ -43,6 +43,7 @@ call plug#begin()
   Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
   Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
   Plug 'caenrique/nvim-toggle-terminal'
+  Plug 'jparise/vim-graphql'
 
   " Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
   " Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
