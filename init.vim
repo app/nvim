@@ -42,8 +42,8 @@ call plug#begin()
   Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " javascript highliging and indentation
   Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx'] } " jsx/typesctipt highliging and indentation
   Plug 'digitaltoad/vim-pug', { 'for': ['pug'] } " Pug syntax highliging
-  Plug 'caenrique/nvim-toggle-terminal'
-  Plug 'jparise/vim-graphql'
+  Plug 'caenrique/nvim-toggle-terminal' " Quick switch to and from build in terminal with Ctrl-z
+  Plug 'jparise/vim-graphql' " GraphQL syntax
 
   " Plug 'edkolev/promptline.vim' " Use it only for promptline file generation
   " Plug 'edkolev/tmuxline.vim' " Use it only for tmuxline file generation
