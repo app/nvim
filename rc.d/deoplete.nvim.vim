@@ -8,7 +8,8 @@ if has_key(plugs, 'deoplete.nvim')
     "let g:deoplete#sources#padawan#log_file = ''
 
     " Close window with documentation after complition finished
-    " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " Do not need for float preview
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
     call deoplete#custom#var('omni', 'functions', {
     \ 'javascript': ['javascriptcomplete#CompleteJS']
