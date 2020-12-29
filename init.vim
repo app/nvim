@@ -17,7 +17,7 @@ call plug#begin()
   Plug 'ervandew/supertab' " Use tab for completeopt everywhere
   Plug 'scrooloose/nerdcommenter' " toggle comments with 'cc' key press
   Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] } " JavaScript Parameter Complete
-  Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx','typescript'], 'do': 'make install'}
   Plug 'vim-airline/vim-airline' " visual decoration 
   Plug 'vim-airline/vim-airline-themes' " visual decoration
   Plug 'overcache/NeoSolarized' " color scheme
@@ -30,10 +30,7 @@ call plug#begin()
   Plug 'app/vim-gitbranch' " single function - returns current git branch name
   Plug 'app/vim-kiri', { 'for': 'kiri'} " experimental. You do not need it
   Plug 'jwalton512/vim-blade', { 'for': 'blade'} " blade templates for Laravel
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',}
   Plug 'spacewander/openresty-vim', { 'for': ['nginx'] } " nginx syntax and completion support
   Plug 'app/jsdoc-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'tpope/vim-liquid',{ 'for': 'liquid'} " Shopify templates syntax language
