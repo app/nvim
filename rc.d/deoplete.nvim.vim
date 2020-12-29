@@ -8,7 +8,7 @@ if has_key(plugs, 'deoplete.nvim')
     "let g:deoplete#sources#padawan#log_file = ''
 
     " Close window with documentation after complition finished
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
     call deoplete#custom#var('omni', 'functions', {
     \ 'javascript': ['javascriptcomplete#CompleteJS']
@@ -17,10 +17,6 @@ if has_key(plugs, 'deoplete.nvim')
     \ 'javascript': '[^. *\t]\.\w*',
     \ })
 
-    let g:deoplete#sources#ternjs#types = 1 " Shows data type hints
-    let g:deoplete#sources#ternjs#docs = 1 " Shows docs extracted from comments
-    let g:deoplete#sources#ternjs#case_insensitive = 1
-    let g:deoplete#sources#ternjs#filetypes = ['javascript.jsx'] "Add extra filetypes
     " let g:deoplete#disable_auto_complete = 1
     set completeopt=longest,menuone,preview
     "let g:deoplete#sources = {}
