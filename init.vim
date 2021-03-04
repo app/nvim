@@ -11,6 +11,7 @@ call plug#begin()
   Plug 'ncm2/float-preview.nvim', " Preview window wihout current line shift :) Will be deprecated in nvim 5.0?
   Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] } " deoplete for js
   " Plug 'pbogut/deoplete-padawan', { 'for': 'php' } " Don't forget install padawan command first
+  Plug 'StanAngeloff/php.vim' " php syntax highliging, { 'for': 'php' }
   Plug 'tweekmonster/deoplete-clang2', { 'for': ['cpp', 'c'] }
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder external tool
   Plug 'junegunn/fzf.vim' " fuzzy finder vim commands
