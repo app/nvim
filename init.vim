@@ -89,3 +89,9 @@ au VimLeave *	set guicursor=n:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor
 
 autocmd BufNewFile,BufRead *.liquid set filetype=javascript
 runtime! rc.d/*.vim
+
+" tmux window title with current filename
+if exists('$TMUX')
+  autocmd BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+  autocmd VimLeave * call system("tmux setw automatic-rename")
+endif
