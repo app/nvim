@@ -1,8 +1,10 @@
 " FZF setup for open file with various search strategies
 if has_key(plugs, 'fzf')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -U -l -g ""'
+  let $FZF_DEFAULT_OPTS = '--layout=reverse'
+  let $BAT_THEME = 'Solarized (dark)'
   let g:fzf_layout = { 'window': 'enew' }
-  let g:fzf_layout = { 'down': '~40%' }
+  let g:fzf_layout = { 'down': '~60%' }
   let g:fzf_buffers_jump = 1
 
   command! -bang -nargs=* GGrep
