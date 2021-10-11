@@ -10,7 +10,11 @@ if has_key(plugs, 'fzf')
   command! -bang -nargs=* GGrep
     \ call fzf#vim#grep(
     \   'git grep --line-number '.shellescape(<q-args>), 0,
-    \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+    \   {'options':['--preview', 'bat --color=always --theme="Solarized (dark)" --style=numbers -H {2}  --line-range :500 {1}| sed s/"48;2;28;209;255"/"4;2;28;209;255"/g']}, <bang>0)
+
+  command! -bang -nargs=? -complete=dir Buffers
+    \ call fzf#vim#buffers({'options': ['--layout=reverse', '--info=inline',
+    \   '--preview', 'bat {4} -H {2} --color=always --theme="Solarized (dark)" --style=numbers  --line-range :500|sed s/"48;2;28;209;255"/"4;2;28;209;255"/g']}, <bang>0)
 
   function! SearchWordWithAg()
     execute 'Ag' expand('<cword>')
